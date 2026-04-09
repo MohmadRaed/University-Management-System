@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            margin:40px;
+            background:#f5f5f5;
+        }
+
+        h1{
+            color:#2c3e50;
+        }
+
+        table{
+            border-collapse: collapse;
+            width:100%;
+            background:white;
+        }
+
+        th,td{
+            border:1px solid #ddd;
+            padding:10px;
+            text-align:left;
+        }
+
+        th{
+            background:#3498db;
+            color:white;
+        }
+
+        tr:nth-child(even){
+            background:#f2f2f2;
+        }
+
+        a{
+            text-decoration:none;
+            padding:6px 10px;
+            background:#3498db;
+            color:white;
+            border-radius:4px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>University Management System</h1>
+
+<h3>Add Student</h3>
+
+<form action="/students-page/add" method="post">
+
+    <input type="text" name="firstName" placeholder="First Name" required>
+
+    <input type="text" name="lastName" placeholder="Last Name" required>
+
+    <input type="email" name="email" placeholder="Email" required>
+
+    <button type="submit">Add Student</button>
+
+</form>
+
+<br>
+
+<h2>Students</h2>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr th:each="student : ${students}">
+
+        <td th:text="${student.id}"></td>
+
+        <td th:text="${student.firstName}"></td>
+
+        <td th:text="${student.lastName}"></td>
+
+        <td th:text="${student.email}"></td>
+
+    </tr>
+
+</table>
+
+</body>
+
+</html>
